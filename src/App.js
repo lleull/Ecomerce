@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import Navbar from './Component/Navbar/Navbar'
+import Main from './Component/Main/Main'
+import Portal from './Component/Main/Portal/Portal'
+import { useState } from 'react'
+const App = () => {
+  const [first, setfirst] = useState(false)
 
-function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+<div className='mainapp'>
+  <Navbar/>
+<Main  portal={first} open={() => setfirst(!first)}/>
+</div>
+{first ? <Portal portal={first} open={() => setfirst(!first)} />:''}
     </div>
-  );
+
+  )
 }
 
-export default App;
+export default App
